@@ -76,28 +76,68 @@
             preamble.style.display = (preamble.style.display === "none" || preamble.style.display === "") ? "block" : "none";
         }
 
-        const cards = {
-            extractive: [
-                { text: "How is this research situated within the planetary metabolism?", suit: "Identifying and Interrupting Extractive Logics" },
-                { text: "Where does control masquerade as care?", suit: "Identifying and Interrupting Extractive Logics" }
-            ],
-            repair: [
-                { text: "What wound is this research addressing?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
-                { text: "Does this research seek to reform or reimagine?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" }
-            ],
-            politics: [
-                { text: "What histories does this research carry?", suit: "The Politics of Knowledge" },
-                { text: "How does this research distribute expertise?", suit: "The Politics of Knowledge" }
-            ],
-            pluralizing: [
-                { text: "Who is missing?", suit: "Pluralizing Perspectives" },
-                { text: "How might this research change if future generations were watching?", suit: "Pluralizing Perspectives" }
-            ],
-            reflexivity: [
-                { text: "What desires am I bringing to this research?", suit: "Fostering Reflexivity" },
-                { text: "What assumptions shape this research?", suit: "Fostering Reflexivity" }
-            ]
-        };
+         const cards = {
+    extractive: [
+        { text: "How is this research situated within the planetary metabolism? Research is not separate from the world—it is part of the planetary body. Does this study contribute to cycles of extraction, or does it nourish regenerative systems? Does it participate in life’s composting and renewal, or does it just accumulate?", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "Where does control masquerade as care? Interventions in nature and society are often framed as acts of care, but they can also be mechanisms of control. Does this research seek to metabolize and heal harm or simply manage it? How can care be reimagined in ways that don’t seek domination or affirmation?", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "What does this research assume about other-than-human beings? Does this study treat land, water, and non-human beings as objects to be studied—or as subjects with agency and intelligence that are participants in the research?", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "Where is the potential harm in this research? Research can cause harm not just through intent, but also through neglect, omission, or unintended consequences.", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "How does this research account for systemic inequities? How does the research take into account the disproportionate impact of the issue being examined on marginalized communities?", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "What is the theory of change? How do we think the project will bring about change?", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "What does refusal make possible? When research encounters resistance—by human communities and more-than-humans—it is important to respect refusal as a boundary.", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "Should this research happen? More research is not always the right answer.", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "What structural constraints shape this research?", suit: "Identifying and Interrupting Extractive Logics" },
+        { text: "How will we decide which norms to follow, bend and which to break?", suit: "Identifying and Interrupting Extractive Logics" }
+    ],
+    repair: [
+        { text: "What wound is this research addressing?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "Does this research seek to reform or reimagine?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "What collaborations would be required for genuine repair?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "What emotional labor is required for this repair?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "How can we help ensure our research is accountable without feigning innocence?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "How can this research go beyond tokenistic and performative gestures of repair?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "Does this research treat repair as a process or a product?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "What assumptions does this research make about repair?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "How can we avoid approaching repair in transactional ways?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+        { text: "How are funding decisions made within the project?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" }
+    ],
+    politics: [
+        { text: "What histories does this research carry?", suit: "The Politics of Knowledge" },
+        { text: "How does this research distribute expertise?", suit: "The Politics of Knowledge" },
+        { text: "Who has already been engaged in this research?", suit: "The Politics of Knowledge" },
+        { text: "Who benefits from this research and who bears its costs?", suit: "The Politics of Knowledge" },
+        { text: "What happens when this knowledge is set loose in the world?", suit: "The Politics of Knowledge" },
+        { text: "How can we discern the roles of different knowledge systems in repair?", suit: "The Politics of Knowledge" },
+        { text: "How is this research accounting for institutionalized legacies of harm?", suit: "The Politics of Knowledge" },
+        { text: "What temporalities does this research reinforce?", suit: "The Politics of Knowledge" },
+        { text: "How can we shift our research from ‘doing to’ to ‘being with’?", suit: "The Politics of Knowledge" },
+        { text: "Do we know when to let research decompose?", suit: "The Politics of Knowledge" }
+    ],
+    pluralizing: [
+        { text: "Who is missing?", suit: "Pluralizing Perspectives" },
+        { text: "How might this research change if future generations were watching?", suit: "Pluralizing Perspectives" },
+        { text: "What knowledges have been dismissed as unscientific or irrational – and why?", suit: "Pluralizing Perspectives" },
+        { text: "What voices are present but not truly respected?", suit: "Pluralizing Perspectives" },
+        { text: "What would this research look like if the Earth had a seat at the table?", suit: "Pluralizing Perspectives" },
+        { text: "Is there space for the unknown – and the unknowable?", suit: "Pluralizing Perspectives" },
+        { text: "How does/will this research navigate language and translation?", suit: "Pluralizing Perspectives" },
+        { text: "How does this research recognize and metabolize complicity?", suit: "Pluralizing Perspectives" },
+        { text: "What aspects of repair are outside the scope of this research?", suit: "Pluralizing Perspectives" },
+        { text: "Are we accounting for complexities?", suit: "Pluralizing Perspectives" }
+    ],
+    reflexivity: [
+        { text: "What desires am I bringing to this research?", suit: "Fostering Reflexivity" },
+        { text: "What assumptions shape this research?", suit: "Fostering Reflexivity" },
+        { text: "How can I invite others into this process?", suit: "Fostering Reflexivity" },
+        { text: "How do I respond when challenged?", suit: "Fostering Reflexivity" },
+        { text: "How am I challenging my own presumed objectivity?", suit: "Fostering Reflexivity" },
+        { text: "What if I was the object of study?", suit: "Fostering Reflexivity" },
+        { text: "How am I part of the problem?", suit: "Fostering Reflexivity" },
+        { text: "How might this research assume a right to intervene?", suit: "Fostering Reflexivity" },
+        { text: "Am I doing this research to repair harm—or to repair my self-image?", suit: "Fostering Reflexivity" },
+        { text: "What kind of preparation and support do we still need?", suit: "Fostering Reflexivity" }
+    ]
+};
 
         function drawCard() {
             const selectedSuit = document.getElementById("suitSelect").value;
