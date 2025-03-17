@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reparative Research Card Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .card {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            background-color: #f9f9f9;
+            text-align: left;
+        }
+        select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .preamble {
+            text-align: left;
+            margin: auto;
+            width: 80%;
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Towards Reparative Research</h1>
+    <button onclick="togglePreamble()">How to use this deck</button>
+    <div id="preamble" class="preamble">
+        <p>Even when research claims to be reparative, it often smuggles in old habits: the desire for mastery, the expectation of certainty, the assumption that knowledge is something to extract rather than something to be in relationship with. Knowledge-making, under these conditions, becomes another form of possession—one more way to accumulate, enclose, and control. This deck invites you to instead approach research as a set of relations. What happens when we treat research not as a tool of extraction, but as a field of entanglement.</p>
+        <p>This deck does not offer answers, or straight paths. Instead, it threads its way through paradigms, loosening hardened assumptions, breaking down what no longer serves. It asks:</p>
+        <ul>
+            <li>What culturally-embedded assumptions are we unknowingly bringing to our research?</li>
+            <li>What if research wasn’t about accumulating knowledge, but about composting harm?</li>
+            <li>Where have we mistaken control for care?</li>
+            <li>When is research not the appropriate response to harm?</li>
+            <li>Where do we still refuse to be undone, even when undoing is necessary for repair?</li>
+        </ul>
+        <p>There are no clean or quick fixes here. Repair is not an event; it’s a multi-layered, non-linear metabolic process. It requires ongoing work, attention, and the willingness to be undone. It might result in new knowledge, but it also holds space for what cannot be known, should not be known, or refuses to be known.</p>
+        <p><strong>How to use this deck:</strong></p>
+        <ul>
+            <li>Shuffle the cards and see which one finds you. Sit with the questions on your own or as a group, or start your lab meetings by collectively processing one of the cards.</li>
+            <li>Rather than simply answer the questions, consider what emotional and intellectual responses they bring up for you (you might have multiple responses that contradict each other). Which of your assumptions and investments do the questions challenge or affirm? What resistances do they activate? What are these different responses teaching you about the work needed to prepare for reparative research?</li>
+            <li>Remember, blame and shame often become barriers to repair. This deck supports people in facing difficult truths in compassionate ways, balancing responsibility with generosity.</li>
+        </ul>
+    </div>
+    
+    <h2>Select a Suit</h2>
+    <select id="suitSelect">
+        <option value="all">All Suits</option>
+        <option value="extractive">Identifying and Interrupting Extractive Logics</option>
+        <option value="repair">Toward Material, Relational, Epistemic, and Affective Repair</option>
+        <option value="politics">The Politics of Knowledge</option>
+        <option value="pluralizing">Pluralizing Perspectives</option>
+        <option value="reflexivity">Fostering Reflexivity</option>
+    </select>
+    <br>
+    <button onclick="drawCard()">Draw a Card</button>
+    
+    <div id="card" class="card" style="display:none;"></div>
+    
+    <script>
+        function togglePreamble() {
+            const preamble = document.getElementById("preamble");
+            preamble.style.display = (preamble.style.display === "none" || preamble.style.display === "") ? "block" : "none";
+        }
+
+        const cards = {
+            extractive: [
+                { text: "How is this research situated within the planetary metabolism?", suit: "Identifying and Interrupting Extractive Logics" },
+                { text: "Where does control masquerade as care?", suit: "Identifying and Interrupting Extractive Logics" }
+            ],
+            repair: [
+                { text: "What wound is this research addressing?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
+                { text: "Does this research seek to reform or reimagine?", suit: "Toward Material, Relational, Epistemic, and Affective Repair" }
+            ],
+            politics: [
+                { text: "What histories does this research carry?", suit: "The Politics of Knowledge" },
+                { text: "How does this research distribute expertise?", suit: "The Politics of Knowledge" }
+            ],
+            pluralizing: [
+                { text: "Who is missing?", suit: "Pluralizing Perspectives" },
+                { text: "How might this research change if future generations were watching?", suit: "Pluralizing Perspectives" }
+            ],
+            reflexivity: [
+                { text: "What desires am I bringing to this research?", suit: "Fostering Reflexivity" },
+                { text: "What assumptions shape this research?", suit: "Fostering Reflexivity" }
+            ]
+        };
+
+        function drawCard() {
+            const selectedSuit = document.getElementById("suitSelect").value;
+            let availableCards = selectedSuit === "all" ? Object.values(cards).flat() : (cards[selectedSuit] ? cards[selectedSuit] : []);
+
+            if (availableCards.length > 0) {
+                const randomIndex = Math.floor(Math.random() * availableCards.length);
+                const selectedCard = availableCards[randomIndex];
+                
+                document.getElementById("card").innerHTML = `<p>${selectedCard.text}</p><p><strong>${selectedCard.suit}</strong></p>`;
+                document.getElementById("card").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
