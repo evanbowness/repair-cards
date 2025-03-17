@@ -1,28 +1,79 @@
-I reviewed the code you provided. It looks like an HTML file for a "Reparative Research Card Generator." Here are a few issues and suggestions for debugging:
+To make your HTML page work well on mobile browsers, you can follow these steps:
 
-1. **Toggle Preamble Function**:
-   - The `togglePreamble` function has a syntax error. The ternary operator is not correctly used. It should be:
-     ```javascript
-     function togglePreamble() {
-       const preamble = document.getElementById("preamble");
-       preamble.style.display = (preamble.style.display === "none" || preamble.style.display === "") ? "block" : "none";
+1. **Responsive Meta Tag**:
+   - Ensure you have the viewport meta tag in your `<head>` section. This helps control the layout on mobile browsers.
+     ```html
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     ```
+
+2. **Responsive CSS**:
+   - Use relative units like percentages, `em`, or `rem` instead of fixed units like `px` for widths, margins, and paddings.
+   - Implement media queries to adjust styles for different screen sizes.
+     ```css
+     body {
+       font-family: Arial, sans-serif;
+       text-align: center;
+       padding: 20px;
+     }
+     .card {
+       border: 2px solid black;
+       padding: 20px;
+       margin: 20px auto;
+       width: 100%; /* Changed from 60% to 100% for better mobile view */
+       max-width: 600px; /* Added max-width for larger screens */
+       background-color: #f9f9f9;
+       text-align: left;
+     }
+     select, button {
+       margin: 10px;
+       padding: 10px;
+       font-size: 16px;
+       width: 100%; /* Full width for better mobile usability */
+       max-width: 300px; /* Added max-width for larger screens */
+     }
+     .preamble {
+       text-align: left;
+       margin: auto;
+       width: 100%; /* Changed from 80% to 100% for better mobile view */
+       max-width: 600px; /* Added max-width for larger screens */
+       display: none;
+       padding: 10px;
+       border: 1px solid #ccc;
+       background-color: #f9f9f9;
+     }
+     @media (min-width: 600px) {
+       .card, .preamble {
+         width: 60%; /* Adjust width for larger screens */
+       }
      }
      ```
 
-2. **Draw Card Function**:
-   - Ensure that the `drawCard` function correctly handles the selection and display of cards. The current implementation seems fine, but double-check that the `cards` object is correctly populated and that the `suitSelect` element has the correct IDs and values.
+3. **Flexible Layouts**:
+   - Use CSS Flexbox or Grid to create flexible layouts that adapt to different screen sizes.
+     ```css
+     body {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       padding: 20px;
+     }
+     ```
 
-3. **HTML Structure**:
-   - Ensure that all HTML tags are correctly closed and nested. The provided HTML structure looks good, but it's always good to validate it using an HTML validator.
+4. **Touch-Friendly Elements**:
+   - Ensure buttons and interactive elements are large enough to be easily tapped on mobile devices.
+   - Increase the size of touch targets and add spacing between them.
+     ```css
+     button {
+       padding: 15px;
+       font-size: 18px;
+     }
+     ```
 
-4. **CSS Styling**:
-   - The CSS styles are correctly defined within the `<style>` tag. Ensure that the styles are applied as expected.
+5. **Testing**:
+   - Test your page on various devices and screen sizes to ensure it looks and functions well.
+   - Use browser developer tools to simulate different devices and screen sizes.
 
-5. **General Debugging Tips**:
-   - Use browser developer tools (F12) to inspect elements, check the console for errors, and debug JavaScript.
-   - Ensure that all referenced IDs and classes in JavaScript and CSS match those in the HTML.
-
-Here's the corrected version of your code with the fixed `togglePreamble` function:
+Here's the updated HTML with responsive design considerations:
 
 ```html
 <!DOCTYPE html>
@@ -36,12 +87,16 @@ Here's the corrected version of your code with the fixed `togglePreamble` functi
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .card {
       border: 2px solid black;
       padding: 20px;
       margin: 20px auto;
-      width: 60%;
+      width: 100%;
+      max-width: 600px;
       background-color: #f9f9f9;
       text-align: left;
     }
@@ -49,15 +104,23 @@ Here's the corrected version of your code with the fixed `togglePreamble` functi
       margin: 10px;
       padding: 10px;
       font-size: 16px;
+      width: 100%;
+      max-width: 300px;
     }
     .preamble {
       text-align: left;
       margin: auto;
-      width: 80%;
+      width: 100%;
+      max-width: 600px;
       display: none;
       padding: 10px;
       border: 1px solid #ccc;
       background-color: #f9f9f9;
+    }
+    @media (min-width: 600px) {
+      .card, .preamble {
+        width: 60%;
+      }
     }
   </style>
 </head>
@@ -108,16 +171,10 @@ Here's the corrected version of your code with the fixed `togglePreamble` functi
         { text: "How is this research situated within the planetary metabolism? Research is not separate from the world—it is part of the planetary body. Does this study contribute to cycles of extraction, or does it nourish regenerative systems? Does it participate in life’s composting and renewal, or does it just accumulate?", suit: "Identifying and Interrupting Extractive Logics" },
         { text: "Where does control masquerade as care? Interventions in nature and society are often framed as acts of care, but they can also be mechanisms of control. Does this research seek to metabolize and heal harm or simply manage it? How can care be reimagined in ways that don’t seek domination or affirmation?", suit: "Identifying and Interrupting Extractive Logics" },
         { text: "What does this research assume about other-than-human beings? Does this study treat land, water, and non-human beings as objects to be studied—or as subjects with agency and intelligence that are participants in the research? Does this research assume we are separate from these beings or entangled with them, and what responsibilities and epistemic implications follow from this assumption?", suit: "Identifying and Interrupting Extractive Logics" },
-        { text: "Where is the potential harm in this research? Research can cause harm not just through intent, but also through neglect, omission, or unintended consequences. If this work were to cause harm, what would it be? Does this study remove knowledge, data, or labor from a community, ecosystem, or way of knowing without consent and reciprocity? What safeguards could be built in to try and prevent harm?", suit: "Identifying and Interrupting Extractive Logics" },
-        { text: "How does this research account for systemic inequities? How does the research take into account the disproportionate impact of the issue being examined on marginalized communities? How, if at all, does the project serve these communities? Is there any risk the project will further marginalize them? How can it be more accountable to these communities, even if not conducted in direct collaboration with them?", suit: "Identifying and Interrupting Extractive Logics" },
-        { text: "What is the theory of change? How do we think the project will bring about change? Which (human and other-than-human) communities will benefit most from this change? Which communities might be negatively impacted? Does it attempt to produce and impose a one-size-fits-all solution? What would happen if the research embraced site-specific, relational, or plural interventions instead?", suit: "Identifying and Interrupting Extractive Logics" },
-        { text: "What does refusal make possible? When research encounters resistance—by human communities and more-than-humans—it is important to respect refusal as a boundary. Who might refuse to participate in this research, and why? How can we ensure refusals by communities and knowledge holders will be honored rather than worked around? How do we recognize refusal beyond human voices?", suit: "Identifying and Interrupting Extractive Logics" },
-        { text: "Should this research happen? More research is not always the right answer. What if the right move is unlearning, pausing, or redirecting resources rather than producing new knowledge? How can we balance responsibility with the humility of knowing that someSure, I'll continue from where I left off:
+        { text: "Where is the potential harm in this research? Research can cause harm not just through intent, but also through neglect, omission, or unintended consequences. If this work were to cause harm, what would it be? Does this study remove knowledge, data, or labor from a community, ecosystem, or way of knowing without consent andSure, I'll continue from where I left off:
 
 ```html
-        harms can never fully be addressed?", suit: "Identifying and Interrupting Extractive Logics" },
-        { text: "What structural constraints shape this research? How do academic timelines, funding structures, and publication pressures limit possibilities for repair? How can this research strategically and carefully challenge institutional expectations while prioritizing the integrity of relationships and the depth of inquiry? How do we resist the temptation to perform research for grants, careers, or recognition?", suit: "Identifying and Interrupting Extractive Logics" },
-        { text: "How will we decide which norms to follow, bend, and which to break? Every discipline has ruling norms and imaginaries, not all of which are explicit or conscious. Reparative research will likely require us to discern among which norms we can follow, bend, and break—how will we do so? Who will decide?", suit: "Identifying and Interrupting Extractive Logics" },
+        reciprocity? What safeguards could be built in to try and prevent harm?", suit: "Identifying and Interrupting Extractive Logics" },
       ],
       repair: [
         { text: "What wound is this research addressing? All repair begins with acknowledging harm. What specific harm, rupture, or imbalance does this research seek to heal? Is the intervention appropriate for addressing this? Remember that harm is not limited to humans, and many wounds are collective, not individual.", suit: "Toward Material, Relational, Epistemic, and Affective Repair" },
@@ -144,12 +201,12 @@ Here's the corrected version of your code with the fixed `togglePreamble` functi
         { text: "Do we know when to let research decompose? Research is rarely timeless. The implications of findings change over time, becoming less relevant or even dangerous. How can we identify the paradigms, theories, and even fields that need to rot? How can our research account for its own changing relevance and meaning over time? How can we be accountable in the long term—even after the project is over?", suit: "The Politics of Knowledge" }
       ],
       pluralizing: [
-        { text: "Who is missing? Every study, model, or dataset includes choices about who/what is seen and who/what is erased. What perspectives, knowledge systems, or more-than-human intelligences are absent in this research? What shifts if theySure, I'll continue from where I left off:
+        { text: "Who is missing? Every study, model, or dataset includes choices about who/what is seen and who/what is erased. What perspectives, knowledge systems, or more-than-human intelligences are absent in this research? What shifts if they are included—in substantive rather than tokenistic ways?", suit: "Pluralizing Perspectives" },
+        { text: "How might this research change if future generations were watching? If those living 50 years from now were here, what would they say about our work? Would they see it as a gift, a burden, an apology? What might change about the research if their needs were centered? What is keeping this research from more fully accepting its intergenerational responsibilities (including to generations past, present, and future)?", suit: "Pluralizing Perspectives" },
+        { text: "What knowledges have been dismissed as unscientific or irrational—and why? Dominant knowledge systems often marginalize oral traditions, spiritual epistemologies, or ways of knowing deeply rooted in lived experience.Sure, I'll continue from where I left off:
 
 ```html
-        are included—in substantive rather than tokenistic ways?", suit: "Pluralizing Perspectives" },
-        { text: "How might this research change if future generations were watching? If those living 50 years from now were here, what would they say about our work? Would they see it as a gift, a burden, an apology? What might change about the research if their needs were centered? What is keeping this research from more fully accepting its intergenerational responsibilities (including to generations past, present, and future)?", suit: "Pluralizing Perspectives" },
-        { text: "What knowledges have been dismissed as unscientific or irrational—and why? Dominant knowledge systems often marginalize oral traditions, spiritual epistemologies, or ways of knowing deeply rooted in lived experience. What insights have been overlooked by our field because they do not fit within conventional academic research frames? How does our research relate to these other ways of knowing?", suit: "Pluralizing Perspectives" },
+        What insights have been overlooked by our field because they do not fit within conventional academic research frames? How does our research relate to these other ways of knowing?", suit: "Pluralizing Perspectives" },
         { text: "What voices are present but not truly respected? If marginalized voices are included in this research, are they shaping the core questions and frameworks, or are they just being cited as sources of raw data? Are different perspectives valued only as an epistemic asset or as an invitation into relational transformation? Who decides (e.g., where “forward” is, what the project should focus on, to what end)?", suit: "Pluralizing Perspectives" },
         { text: "What would this research look like if the Earth had a seat at the table? If a river, soil, or wind were active participants in this study, how would the research change? What questions would they ask? What would this research look like if the Earth didn’t just contribute to it, but led the design of it?", suit: "Pluralizing Perspectives" },
         { text: "Is there space for the unknown—and the unknowable? Research is often motivated by the search for certainty and mastery, and the presumption that researchers are entitled to access all knowledges. How can we accept that not all knowledge will be shared with us—and we may not “understand” even that which is shared? What might happen if we made more space for the unknown and the unknowable?", suit: "Pluralizing Perspectives" },
