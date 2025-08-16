@@ -3,7 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Reparative Research Cards </title>
+<title>Reparative Research Cards </title>
+
+  <!-- Cache-busting snippet -->
+  <script>
+    (function () {
+      // 👇 change this value each time you publish a new build
+      const VERSION = "2025-08-16-1";  
+
+      const url = new URL(window.location.href);
+      const current = url.searchParams.get("v");
+      if (current !== VERSION) {
+        url.searchParams.set("v", VERSION);
+        window.location.replace(url.toString());
+      }
+    })();
+  </script>
+
+  <!-- Optional: meta headers to discourage browser caching of the HTML -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <style>
     body {
       font-family: Arial, sans-serif;
